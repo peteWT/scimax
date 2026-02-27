@@ -1,0 +1,24 @@
+;;; preload.el.example --- Example preload configuration for scimax
+;;
+;; Copy this file to user/preload.el and uncomment the lines you want.
+;; This file is loaded before packages.el, so you can set variables
+;; that control which packages are loaded.
+
+;;; Exclude packages you don't need:
+;; (setq scimax-excluded-packages
+;;       '(elfeed elpy kitchingroup helm helm-bibtex helm-projectile
+;;         jedi jedi-direx hy-mode google-this magithub dashboard))
+
+;;; Known dependency clusters:
+;;   If you exclude a package that others depend on, Emacs will show a
+;;   clear `require' error at startup. Known relationships:
+;;
+;;   counsel       -> scimax-ivy, flyspell-correct-ivy
+;;   yasnippet     -> scimax-yas
+;;   org-ref       -> scimax-org (requires org-ref)
+;;   projectile    -> scimax-notebook
+;;   hydra         -> scimax-hydra, ivy-hydra
+;;   swiper        -> counsel (requires ivy)
+;;   magit         -> magithub
+
+;;; preload.el.example ends here

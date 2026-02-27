@@ -34,6 +34,14 @@
   (when (file-exists-p preload)
     (load preload)))
 
+(defvar scimax-excluded-packages nil
+  "List of package symbols to exclude from loading.
+Set this in user/preload.el before packages load.
+Use the symbol from each (use-package NAME ...) declaration, e.g.:
+  (setq scimax-excluded-packages '(elfeed elpy kitchingroup))
+For org-babel entries, use the base filename symbol,
+e.g. 'scimax-notebook or 'scimax-editmarks.")
+
 (defvar scimax-load-user-dir t
   "Controls if the user directory is loaded.")
 
@@ -103,7 +111,9 @@
 (set-language-environment "UTF-8")
 
 (require 'bootstrap)
-(require 'packages)
+(if (file-exists-p (expand-file-name "user/packages.el" scimax-dir))
+    (load (expand-file-name "user/packages.el" scimax-dir))
+  (require 'packages))
 
 ;; it appears this help library is not loaded fully in the emacs-win
 ;; directory. See issue #119. This appears to fix that.
